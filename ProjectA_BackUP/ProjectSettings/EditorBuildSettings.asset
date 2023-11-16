@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Test_Intro.unity
+    guid: 59849b42ba7ab2444ba487f19b71d025
+  - enabled: 1
+    path: Assets/Scenes/Monster.unity
+    guid: 10355563d1834ee4ba94b75c1b5dfaf3
+  - enabled: 1
+    path: Assets/Scenes/Village.unity
+    guid: 993beb8f0aa716843b8a76fe551916fe
+  m_configObjects: {}
