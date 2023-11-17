@@ -16,8 +16,6 @@ public class Village : MonoBehaviour
     public ShopUI Shop;
     //List<Monster> monList { get; set; }
     float time;
-    float halfTime2;
-    string scene;
     [SerializeField]
     public int monsterCount;
     [SerializeField]
@@ -30,10 +28,11 @@ public class Village : MonoBehaviour
     }
     void Start()
     {
+        monsterCount = 0;
+        maxCount = 1000;
         instanceManager.Createinstance("Terrain", "Terrain_1");
         instanceManager.Createinstance("Charactor", "RPGHeroPolyart");
-        scene = SceneManager.GetActiveScene().name;
-        if (scene == "Village")
+        if (SceneManager.GetActiveScene().name == "Village")
         {
             createObj = Resources.Load<GameObject>("Building/Smithy");
             createObj = GameObject.Instantiate<GameObject>(createObj);
@@ -49,16 +48,6 @@ public class Village : MonoBehaviour
             MonoBehaviour script = createObj.AddComponent<Shop>();
             Shop.shop = script as Shop;
         }
-        monsterCount = 0;
-        maxCount = 50;
-        // 임시코드( 10마리 소환 테스트)
-        //for (int i = 0; i < 10; i++)
-        //{
-        //    Monster rcMonster = (Monster)instanceManager.Createinstance("Monster", "Monster_1");
-        //}
-        //if ()
-        //
-        //Monster rcMonster = (Monster)instanceManager.Createinstance("Monster", "Monster_1
     }
     public void CreateMonster()
     {
@@ -71,12 +60,12 @@ public class Village : MonoBehaviour
     {
         foreach (GameObject monster in monsters)
         {
-            Monster monScript = monster.GetComponent<Monster>();
-            if (player.capsuleCollider.bounds.Intersects(monScript.capsuleCollider.bounds))
+            Collider monBounds = monster.GetComponent<Collider>();
+            if (player.capsuleCollider.bounds.Intersects(monBounds.bounds))
             {
-                //Debug.Log(monster.name + " Intersects with Player");
                 monster.SetActive(false);
                 monsterCount++;
+                SendMessage("DamageTrigger", monBounds);
                 break;
             }
         }
@@ -98,11 +87,10 @@ public class Village : MonoBehaviour
                 }
             }
         }
-
-        //if (Input.GetKeyDown(KeyCode.LeftControl))
-        //{
-        //    CreateMonster();
-        //}
+        if (monsterCount >= maxCount)
+        {
+            SceneManager.LoadScene("Village");
+        }
     }
 
     private void LateUpdate()

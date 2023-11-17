@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Lich_Attack : MonoBehaviour
 {
-    
+    public byte damage;
+
     void Start()
     {
-        
+        damage = 50;
     }
 
     

@@ -15,7 +15,6 @@ public class OptionSetting : MonoBehaviour
     public GameObject Shop;
     public GameObject JoyStick;
     public GameObject UI;
-    public GameObject camera;
 
     void Start()
     {
@@ -40,14 +39,14 @@ public class OptionSetting : MonoBehaviour
         UI.SetActive(false);
         JoyStick.SetActive(false);
         Shop.SetActive(true);
-        camera.SendMessage("View", true);
+        Camera.main.SendMessage("View", true);
     }
     public void CloseShop()
     {
         UI.SetActive(true);
         JoyStick.SetActive(true);
         Shop.SetActive(false);
-        camera.SendMessage("View", false);
+        Camera.main.SendMessage("View", false);
     }
 
     public void OpenOption()

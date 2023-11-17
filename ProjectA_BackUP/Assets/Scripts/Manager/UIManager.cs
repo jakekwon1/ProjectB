@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     public UICharactorInfo uiCharactorInfoSrc;   // 인스턴스 생성에 사용할 비활성화된 UI 게임 오브젝트의 컴포넌트
     public List<UICharactorInfo> uiCharInfoList { get; set; }
+    byte playerHp;
 
     private void Awake()
     {
@@ -17,7 +18,8 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-
+        //playerHp = GetComponent<Character>().hp;
+        //hp.fillAmount = Mathf.Lerp(0, 100, playerHp);
     }
 
     public UICharactorInfo CreateCharactorInfoUI(string name, GameObject owner)
@@ -53,6 +55,6 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-
+        
     }
 }

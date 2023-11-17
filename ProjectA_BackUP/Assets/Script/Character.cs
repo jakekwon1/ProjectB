@@ -17,7 +17,7 @@ public class Character : MonoBehaviour
     public NavMeshAgent navi { get; set; }
     public UICharactorInfo playerUI { get; set; }
     private Transform findHpTr;
-    public byte hp;
+    public byte hp { get; set; }
     public CapsuleCollider capsuleCollider { get; set; }
     //public NavMeshAgent navi { get; set; }
     public Transform hpTr
@@ -38,10 +38,13 @@ public class Character : MonoBehaviour
             return null;
         }
     }
-
-    void Start()
+    private void Awake()
     {
         hp = 100;
+    }
+    void Start()
+    {
+
         if (SceneManager.GetActiveScene().name.Equals("Village"))
             speed = 10f;
         else speed = 10f;
@@ -60,8 +63,12 @@ public class Character : MonoBehaviour
         transform.position = tmp;
         
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
     // Update is called once per frame
-    void Update()
+        void Update()
     {
         if(isMoving)
             Move();

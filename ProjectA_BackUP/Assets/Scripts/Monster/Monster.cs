@@ -11,12 +11,14 @@ public class Monster : MonoBehaviour
     public Animator ani;
     private float speed;
     public CapsuleCollider capsuleCollider { get; set; }
+    public byte damage;
 
     void Start()
     {
         capsuleCollider = GetComponent<CapsuleCollider>();
         speed = 6.0f;
         hp = 100;
+        damage = 30;
     }
     public void MoveMonster()
     {

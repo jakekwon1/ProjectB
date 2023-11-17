@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class InventoryUIManager : MonoBehaviour
 {
     public GameObject inventory;   
     public GameObject itemSlot;
     public GameObject skillSlot;
+    public Button closeButton;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +21,20 @@ public class InventoryUIManager : MonoBehaviour
         if (inventory.gameObject.activeSelf)
         {
             inventory.gameObject.SetActive(false);
+            closeButton.gameObject.SetActive(false);
         }
         else if ( !inventory.gameObject.activeSelf)
         {
             inventory.gameObject.SetActive(true);
+            closeButton.gameObject.SetActive(true);
+        }
+    }
+    public void CloseButton()
+    {
+        if (inventory.gameObject.activeSelf)
+        {
+            inventory.gameObject.SetActive(false);
+            closeButton.gameObject.SetActive(false);
         }
     }
 
@@ -39,10 +49,6 @@ public class InventoryUIManager : MonoBehaviour
         itemSlot.SetActive(false);
         skillSlot.SetActive(true);
     }
-
-
-
-
 
     // Update is called once per frame
     void Update()
