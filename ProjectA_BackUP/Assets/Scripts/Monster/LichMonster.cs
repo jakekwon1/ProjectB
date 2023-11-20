@@ -28,12 +28,13 @@ public class LichMonster : MonoBehaviour
     public void MoveMonster()
     {
         float distance = Vector3.Distance(Village.instance.player.transform.position, transform.position);
-        if (distance <= 8.0f)
+        if (distance <= 16.0f)
         {
             ani.SetInteger("aniIndex", 1);
             speed = 0.0f;
+            transform.LookAt(Village.instance.player.transform.position);
         }
-        else if (distance >= 8.0f)
+        else if (distance >= 16.0f)
         {
             ani.SetInteger("aniIndex", 0);
             speed = 3.0f;
@@ -49,6 +50,7 @@ public class LichMonster : MonoBehaviour
         {
             script.gameObject.SetActive(true);
             script.gameObject.transform.position = transform.GetChild(2).position;
+            script.enabled = true;
         }
     }
     void Update()

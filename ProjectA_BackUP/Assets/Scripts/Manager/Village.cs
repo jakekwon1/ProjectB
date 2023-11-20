@@ -52,8 +52,7 @@ public class Village : MonoBehaviour
     public void CreateMonster()
     {
         Monster createMonster =  (Monster)instanceManager.Createinstance("Monster", "Monster_1");
-        LichMonster rcLichMonster = (LichMonster)instanceManager.Createinstance("Lich", "Lich_Monster");
-        //monList.Add(createMonster);
+        
     }
 
     void CollisionDetect()
@@ -83,6 +82,10 @@ public class Village : MonoBehaviour
                     CreateMonster();
                     time -= 1.0f;
                     spawn++;
+                    if (spawn % 2 == 0)
+                    {
+                        LichMonster rcLichMonster = (LichMonster)instanceManager.Createinstance("Lich", "Lich_Monster");
+                    }
                     break;
                 }
             }

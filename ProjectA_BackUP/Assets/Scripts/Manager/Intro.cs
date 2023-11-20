@@ -22,8 +22,8 @@ public class Intro : MonoBehaviour
 
     public void Onclick()
     {
-        //SceneManager.LoadScene("Monster");
-        SceneManager.LoadScene("Village");
+        SceneManager.LoadScene("Monster");
+        //SceneManager.LoadScene("Village");
     }
 
     void Update()
