@@ -7,8 +7,11 @@ public class InventoryUIManager : MonoBehaviour
 {
     public GameObject inventory;   
     public GameObject itemSlot;
+    public Image itemButton;
     public GameObject skillSlot;
+    public Image skillButton;
     public Button closeButton;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,13 +44,17 @@ public class InventoryUIManager : MonoBehaviour
     public void ItemSlot()
     {
         skillSlot.SetActive(false);
+        skillButton.color = Color.gray;
         itemSlot.SetActive(true);
+        itemButton.color = Color.white;
     }
 
     public void SkillSlot()
     {
         itemSlot.SetActive(false);
+        itemButton.color = Color.gray;
         skillSlot.SetActive(true);
+        skillButton.color = Color.white;
     }
 
     // Update is called once per frame

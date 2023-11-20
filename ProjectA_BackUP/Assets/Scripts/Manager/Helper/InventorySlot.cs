@@ -34,7 +34,7 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
                     itemIndex = i;
                     Debug.Log(i + "slot");
                     selectImg.transform.position = eventData.position;
-                    selectImg.sprite = Resources.Load<Sprite>("UI" + inventory[itemIndex].name);
+                    selectImg.sprite = Resources.Load<Sprite>("UI/" + inventory[i].name);
                     selectImg.gameObject.SetActive(true);
                     break;
                 }
@@ -66,15 +66,8 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
                     itemIndex = -1;
                     break;
                 }
-
             }
         }
-        //if(itemIndex != -1)
-        //{
-        //    selectImg.gameObject.SetActive(false);
-        //    selectImg = null;
-        //    itemIndex = -1;
-        //}
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -83,24 +76,30 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         {
             for (int i = 0; i < inventory.Count; i++)
             {
-                if (inventory[i].icon.sprite == null)
+                if (inventory[i].PtInRect(eventData.position))
                 {
-                    inventory[i].icon.sprite = Resources.Load<Sprite>("UI/" + inventory[itemIndex].icon);
-                    inventory[i].icon.gameObject.SetActive(true);
-                    inventory[itemIndex].icon.gameObject.SetActive(false);
-                    inventory[itemIndex].icon.sprite = null;
+                    if (inventory[i].icon.sprite == null)
+                    {
+                        inventory[i].icon.sprite = Resources.Load<Sprite>("UI/" + inventory[itemIndex].name);
+                        inventory[i].icon.gameObject.SetActive(true);
+                        inventory[itemIndex].icon.gameObject.SetActive(false);
+                        inventory[itemIndex].icon.sprite = null;
+                    }
+                    else
+                    {
+                        inventory[itemIndex].icon.sprite = Resources.Load<Sprite>("UI/" + inventory[i].name);
+                        inventory[i].icon.sprite = Resources.Load<Sprite>("UI/" + selectImg.sprite.name);
+                    }
+                    break;
                 }
-                else
-                {
-                    inventory[itemIndex].icon.sprite = Resources.Load<Sprite>("UI/" + inventory[i].icon);
-                    inventory[i].icon.sprite = Resources.Load<Sprite>("UI/" + selectImg);
-                }
-                break;
+            }
+            if (itemIndex != -1)
+            {
+                selectImg.gameObject.SetActive(false);
+                selectImg.sprite = null;
+                itemIndex = -1;
             }
         }
-            selectImg.gameObject.SetActive(false);
-            selectImg = null;
-            itemIndex = -1;
     }
 
 
@@ -109,6 +108,6 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
