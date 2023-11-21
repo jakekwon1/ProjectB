@@ -5,12 +5,30 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
+    string line;
+    
+    int count;
     void Start()
     {
-        //if()
+        line = string.Empty;
+        count = -1;
+        using (StreamReader reader = new StreamReader(Application.dataPath + "/Resources/ITEM/ItemManager.csv")) // 없으면 생성함
+        {
+            string read;
+            while ((read = reader.ReadLine()) != null)
+            {
+                line += read + "//";
+                //count++;
+            }
+        }
+        string[] split = line.Split("//");
+        if(split.Length >= 21)
+        {
+            using (StreamWriter writer = new StreamWriter(Application.dataPath + "/Resources/ITEM/ItemManager.csv"))
+            {
 
-        //ExportMapData("MapData2");
-        //LoadMapData("MapData2");
+            }
+        }
     }
 
     public void ExportMapData(string mapName)
@@ -115,6 +133,10 @@ public class ItemManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            ItemGet.GetItem();
+            Debug.Log("a");
+        }
     }
 }

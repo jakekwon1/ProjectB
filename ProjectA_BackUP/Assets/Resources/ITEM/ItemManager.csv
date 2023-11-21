@@ -1,1 +1,7 @@
-Index,ItemParts,Attack/Defence
+index,type,atk/def
+0,Helmet,10
+1,Sword,11
+2,Sword,2
+3,TopArmor,8
+4,Helmet,13
+5,Sword,14

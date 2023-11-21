@@ -8,27 +8,37 @@ public class ItemGet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetItem();
+        
     }
 
-    public void GetItem()
+    public static void GetItem()
     {
         string Item = RandomItem();
         int range = Random.Range(1, 20);
-        string line;
+        string line = string.Empty;
+        int index = -1;
         using (StreamReader reader = new StreamReader(Application.dataPath + "/Resources/ITEM/ItemManager.csv"))
         {
-            line = reader.ReadToEnd();
-            using (StreamWriter writer = new StreamWriter(Application.dataPath + "/Resources/ITEM/ItemManager.csv")) // 없으면 생성함
+            string read;
+            while ((read = reader.ReadLine()) != null)
             {
-                writer.WriteLine("Index,ItemParts,Attack/Defence");
-                writer.WriteLine(line);
+                if (string.IsNullOrEmpty(read))
+                    break;
+                line += read + "//";
+                index++;
             }
         }
-
+        string[] split;
+        using (StreamWriter writer = new StreamWriter(Application.dataPath + "/Resources/ITEM/ItemManager.csv")) // 없으면 생성함
+        {
+            split = line.Split("//");
+            for(int i = 0; i < split.Length-1; i++)
+                writer.WriteLine(split[i]);
+            writer.WriteLine(index + "," + Item + "," + range);
+        }
     }
 
-    public string RandomItem()
+    public static string RandomItem()
     {
         int index = Random.Range(0, 3);
         string item = null;
