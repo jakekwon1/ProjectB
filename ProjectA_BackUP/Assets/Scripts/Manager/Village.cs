@@ -14,6 +14,9 @@ public class Village : MonoBehaviour
     GameObject[] monsters;
     GameObject createObj;
     public ShopUI Shop;
+    // 추가 내용----------------------------------------------------------------------------------------------------------
+    public Dungeon_Portal portal;
+    //
     //List<Monster> monList { get; set; }
     float time;
     [SerializeField]
@@ -47,8 +50,24 @@ public class Village : MonoBehaviour
             createObj.transform.eulerAngles = new Vector3(0, 160, 0);
             MonoBehaviour script = createObj.AddComponent<Shop>();
             Shop.shop = script as Shop;
+            createObj = Resources.Load<GameObject>("Portal/Dungeon_Portal");
+            createObj = GameObject.Instantiate<GameObject>(createObj);
+            createObj.name = "Dungeon_Portal";
+            createObj.transform.position = new Vector3(30f, .5f, 20);
+            createObj.transform.eulerAngles = new Vector3(0, 140, 0);
+            MonoBehaviour addedScript = createObj.AddComponent<Dungeon_Portal>();
+
+        }
+        else if (SceneManager.GetActiveScene().name == "BossMonster")
+        {
+            Vector3 createPos = new Vector3(Random.Range(-49f, 49f), 0, Random.Range(-49f, 49f));
+            Vector3 pos = RayHelper.GetPositionOnTerrain(createPos);
+            createObj = Resources.Load<GameObject>("Boss/Red_Dragon");
+            createObj = GameObject.Instantiate<GameObject>(createObj);
+            createObj.transform.position = pos;
         }
     }
+
     public void CreateMonster()
     {
         Monster createMonster =  (Monster)instanceManager.Createinstance("Monster", "Monster_1");
@@ -72,7 +91,7 @@ public class Village : MonoBehaviour
     int spawn;
     void Update()
     {
-        if (SceneManager.GetActiveScene().name != "Village")
+        if (SceneManager.GetActiveScene().name == "Monster")
         {
             time += Time.deltaTime;
             if (time >= 1.0f)
@@ -92,7 +111,7 @@ public class Village : MonoBehaviour
         }
         if (monsterCount >= maxCount)
         {
-            SceneManager.LoadScene("Village");
+            LoadSceaneController.LoadScene("BossMonster");
         }
     }
 
