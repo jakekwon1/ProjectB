@@ -3615,7 +3615,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &447688173
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3656,7 +3656,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 67fa349d7aef0a7439723cab4a57d878, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7268,6 +7268,7 @@ GameObject:
   - component: {fileID: 718830126}
   - component: {fileID: 718830128}
   - component: {fileID: 718830129}
+  - component: {fileID: 718830130}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7384,6 +7385,19 @@ MonoBehaviour:
   Shop: {fileID: 1620703311}
   JoyStick: {fileID: 1506863786}
   UI: {fileID: 861486046}
+--- !u!114 &718830130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718830121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26812b4c7d2fc1c4299c2938944a8824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemInventory: {fileID: 2028775419}
 --- !u!1001 &729938015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18424,7 +18438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1832426240
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18465,7 +18479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c630cf46eddbb114c9ae502f2b47ae63, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -22,7 +22,7 @@ public class Intro : MonoBehaviour
 
     public void Onclick()
     {
-        SceneManager.LoadScene("Monster");
+        SceneManager.LoadScene("Monster2");
         //SceneManager.LoadScene("Village");
     }
 

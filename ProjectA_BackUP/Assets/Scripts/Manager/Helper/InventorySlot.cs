@@ -23,18 +23,30 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         inventory.AddRange(transform.GetComponentsInChildren<ItemSlot>());
     }
 
+    public string SeparateItemFolder(Image itemName)
+    {
+        string r = "ITEM/";
+        string[] split;
+        split = itemName.sprite.name.Split(" ");
+        if (split[split.Length-1] == "Sword")
+            r += "Weapon/" + itemName.sprite.name;
+        else
+            r += "Equipment/" + itemName.sprite.name;
+        return r;
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         for (int i = 0; i < inventory.Count; i++)
         {
-            if (inventory[i].PtInRect(eventData.position))
+            if (inventory[i].PtInRect(eventData.position) /*&& inventory[i].icon.IsActive()*/)
             {
                 if (inventory[i].icon.gameObject.activeSelf == true)
                 {
                     itemIndex = i;
                     Debug.Log(i + "slot");
                     selectImg.transform.position = eventData.position;
-                    selectImg.sprite = Resources.Load<Sprite>("UI/" + inventory[i].name);
+                    selectImg.sprite = Resources.Load<Sprite>(SeparateItemFolder(inventory[i].icon));
                     selectImg.gameObject.SetActive(true);
                     break;
                 }
@@ -80,15 +92,15 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
                 {
                     if (inventory[i].icon.sprite == null)
                     {
-                        inventory[i].icon.sprite = Resources.Load<Sprite>("UI/" + inventory[itemIndex].name);
+                        inventory[i].icon.sprite = Resources.Load<Sprite>(SeparateItemFolder(inventory[itemIndex].icon));
                         inventory[i].icon.gameObject.SetActive(true);
                         inventory[itemIndex].icon.gameObject.SetActive(false);
                         inventory[itemIndex].icon.sprite = null;
                     }
                     else
                     {
-                        inventory[itemIndex].icon.sprite = Resources.Load<Sprite>("UI/" + inventory[i].name);
-                        inventory[i].icon.sprite = Resources.Load<Sprite>("UI/" + selectImg.sprite.name);
+                        inventory[itemIndex].icon.sprite = Resources.Load<Sprite>(SeparateItemFolder(inventory[i].icon));
+                        inventory[i].icon.sprite = Resources.Load<Sprite>(SeparateItemFolder(selectImg));
                     }
                     break;
                 }

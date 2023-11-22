@@ -12,7 +12,6 @@ public class JoyStick2: MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     public static JoyStick2 Instance;
     public Image innerStick;
     public RectTransform rectTransform;
-    public Character character;
     public Vector3 dir {  get; set; }
     Vector3 startPos;
     float radius;
@@ -33,7 +32,14 @@ public class JoyStick2: MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        innerStick.transform.position = eventData.position;
+        //innerStick.transform.position = eventData.position;
+        Village.instance.player.isMoving = true;
+        float distance = Vector3.Distance(startPos, eventData.position);
+        dir = (Vector3)eventData.position - startPos;
+        if (distance > radius)
+            innerStick.transform.position = startPos + dir.normalized * radius;
+        else
+            innerStick.transform.position = startPos + dir.normalized * distance;
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -41,17 +47,9 @@ public class JoyStick2: MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
         float distance = Vector3.Distance(startPos, eventData.position);
             dir = (Vector3)eventData.position - startPos;
         if (distance > radius)
-        {
-            // 스틱이 반지름을 벗어난 상황
-            // 방향 벡터 : 원점에서 누른 위치로 향하는
-
             innerStick.transform.position = startPos + dir.normalized * radius;
-        }
         else
-        {
-            //innerStick.transform.position = eventData.position;
             innerStick.transform.position = startPos + dir.normalized * distance;
-        }   
     }
 
     public void OnPointerUp(PointerEventData eventData)
