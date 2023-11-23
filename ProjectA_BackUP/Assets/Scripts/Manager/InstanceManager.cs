@@ -133,10 +133,7 @@ public class InstanceManager : MonoBehaviour
                     createObj.transform.position = Vector3.zero;
                     break;
                 }
-
         }
         return addedScript;
     }
-
-
 }

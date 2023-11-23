@@ -20,10 +20,14 @@ public class ItemGet : MonoBehaviour
         using (StreamReader reader = new StreamReader(Application.dataPath + "/Resources/ITEM/ItemManager.csv"))
         {
             string read;
-            while ((read = reader.ReadLine()) != null)
+            while ((read = reader.ReadLine()) != null)  // 아무것도 없어도 읽어옴
             {
-                if (string.IsNullOrEmpty(read))
+                if (string.IsNullOrEmpty(read))         // 아무것도 없으면 종료
+                {
+                    line += "index,type,atk/def//";
+                    index++;
                     break;
+                }
                 line += read + "//";
                 index++;
             }

@@ -41,10 +41,10 @@ public class DamageScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            ItemGet.GetItem();
-            Debug.Log("a");
-        }
+        //if (Input.GetKeyDown(KeyCode.F1))
+        //{
+        //    ItemGet.GetItem();
+        //    Debug.Log("a");
+        //}
     }
 }

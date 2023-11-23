@@ -13,6 +13,7 @@ public class Village : MonoBehaviour
     public Lich_Attack lichAttack { get; set; }
     GameObject[] monsters;
     GameObject createObj;
+    public ItemData item { get; set; }
     public ShopUI Shop;
     // 추가 내용----------------------------------------------------------------------------------------------------------
     public Dungeon_Portal portal;
