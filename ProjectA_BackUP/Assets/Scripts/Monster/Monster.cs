@@ -7,18 +7,18 @@ public class Monster : MonoBehaviour
 {
     public Character player { get; set; }
     //public NavMeshAgent navi { get; set; }
-    public byte hp;
+    public float hp;
     public Animator ani;
     private float speed;
     public CapsuleCollider capsuleCollider { get; set; }
-    public byte damage;
+    public float damage;
 
     void Start()
     {
         capsuleCollider = GetComponent<CapsuleCollider>();
         speed = 6.0f;
         hp = 100;
-        damage = 30;
+        damage = 30f;
     }
     public void MoveMonster()
     {

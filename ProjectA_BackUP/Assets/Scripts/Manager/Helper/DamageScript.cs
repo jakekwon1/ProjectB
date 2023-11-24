@@ -7,14 +7,11 @@ public class DamageScript : MonoBehaviour
     Monster monster;
     LichMonster lich_monster;
     Lich_Attack lich_attack;
-    //byte hp { get; set; }
-    byte damage;
-
-    //Collider a;
+    float damage;
     // Start is called before the first frame update
     void Start()
     {
-        //hp = Village.instance.player.hp;
+
     }
 
     public void DamageTrigger(Collider monBounds)
@@ -35,16 +32,12 @@ public class DamageScript : MonoBehaviour
             lich_attack = script as Lich_Attack;
             damage = lich_attack.damage;
         }
-        Village.instance.player.hp -= damage;
+        Village.instance.player.playerUI.SendMessage("SetHp", damage);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.F1))
-        //{
-        //    ItemGet.GetItem();
-        //    Debug.Log("a");
-        //}
+
     }
 }

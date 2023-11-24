@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Lich_Attack : MonoBehaviour
 {
-    public byte damage;
+    public float damage;
     private SphereCollider sphereCollider { get; set; }
     Vector3 dir;
     float time;
 
     void Start()
     {
-        damage = 50;
+        damage = 50f;
         sphereCollider = GetComponent<SphereCollider>();
         dir = Village.instance.player.transform.GetChild(3).position - transform.position;
     }

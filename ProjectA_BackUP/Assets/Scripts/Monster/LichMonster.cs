@@ -6,12 +6,12 @@ using UnityEngine;
 public class LichMonster : MonoBehaviour
 {
     public InstanceManager instanceManager;
-    public byte hp;
+    public float hp;
     public Animator ani;
     public GameObject attackObj { get; set; }
     private float speed;
     public CapsuleCollider capsuleCollider { get; set; }
-    public byte damage;
+    public float damage;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class LichMonster : MonoBehaviour
         ani = GetComponent<Animator>();
         speed = 3.0f;
         hp = 150;
-        damage = 20;
+        damage = 20f;
     }
     public void MoveMonster()
     {

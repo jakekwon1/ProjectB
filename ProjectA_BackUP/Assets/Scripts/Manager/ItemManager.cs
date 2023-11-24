@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class ItemManager : MonoBehaviour
 {
     public Image ItemInventory;
+    Image curImage;
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class ItemManager : MonoBehaviour
                 split = read.Split(',');
                 if (int.Parse(split[0]).Equals(count))
                 {
-                    Image curImage = ItemInventory.transform.GetChild(count).transform.GetChild(0).GetComponentInChildren<Image>();
+                    curImage = ItemInventory.transform.GetChild(count).transform.GetChild(0).GetComponent<Image>();
                     curImage.sprite = Resources.Load<Sprite>(CompareItemType(split[1], int.Parse(split[2])));
                     ItemData item = curImage.gameObject.GetComponent<ItemData>();
                     item.index = int.Parse(split[0]); item.type = split[1]; item.data =int.Parse(split[2]);
@@ -37,6 +38,13 @@ public class ItemManager : MonoBehaviour
                     curImage.gameObject.SetActive(true);
                     count++;
                 }
+            }
+            for (int i = count; i < 20; i++)
+            {
+                curImage = ItemInventory.transform.GetChild(i).transform.GetChild(0).GetComponent<Image>();
+                curImage.sprite = null;
+                curImage.gameObject.GetComponent<ItemData>().index = 0; curImage.gameObject.GetComponent<ItemData>().type = null; curImage.gameObject.GetComponent<ItemData>().data = 0;
+                curImage.gameObject.SetActive(false);
             }
         }
     }
@@ -139,6 +147,9 @@ public class ItemManager : MonoBehaviour
             }
         }
     }
+
+
+
 
     // Update is called once per frame
     void Update()

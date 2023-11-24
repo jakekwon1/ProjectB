@@ -2,27 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UICharactorInfo : MonoBehaviour
 {
     //public TextMeshProUGUI name;
     public Image hp;
     public GameObject owner;
-    byte playerHp;
-
-    void Start()
+    float playerHp
     {
-        if (owner.CompareTag("Player"))
+        get
         {
-            playerHp = owner.GetComponent<Character>().hp;
+            return owner.GetComponent<Character>().hp;
+        }
+        set
+        {
+            owner.GetComponent<Character>().hp = value;
         }
     }
 
+    void Start()
+    {
+        hp.type = Image.Type.Filled;
+        hp.fillMethod = Image.FillMethod.Horizontal;
+        hp.fillOrigin = (int)Image.OriginHorizontal.Left;
+        HpColor();
+    }
+
+    public void SetHp(float damage)
+    {
+        playerHp -= damage;
+        HpColor();
+    }
+    public void HpColor()
+    {
+        float green = (255f / 100f) * playerHp;
+        hp.color = new Color(255-green, green, 0, 1f);
+    }
 
     void Update()
     {
-        if(owner.CompareTag("Player"))
-            hp.fillAmount = Mathf.Lerp(0, 100, playerHp);
+        if (playerHp <= 0)
+        {
+            playerHp = 0;
+            Debug.Log("Player Dead");
+        }
+        hp.fillAmount = playerHp / 100;
+        if (playerHp == 0)
+            SceneManager.LoadScene("Village");
     }
 }

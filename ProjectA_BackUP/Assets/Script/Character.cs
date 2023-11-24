@@ -17,7 +17,7 @@ public class Character : MonoBehaviour
     public NavMeshAgent navi { get; set; }
     public UICharactorInfo playerUI { get; set; }
     private Transform findHpTr;
-    public byte hp { get; set; }
+    public float hp { get; set; }
     public CapsuleCollider capsuleCollider { get; set; }
     //public NavMeshAgent navi { get; set; }
     public Transform hpTr

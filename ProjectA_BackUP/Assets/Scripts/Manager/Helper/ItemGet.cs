@@ -28,6 +28,7 @@ public class ItemGet : MonoBehaviour
                     index++;
                     break;
                 }
+                //if(read.Split(',')[0] == null )
                 line += read + "//";
                 index++;
             }

@@ -4,20 +4,42 @@ using UnityEngine;
 
 public class ItemData : MonoBehaviour
 {
-    public int index { get; set; }
-    public string type { get; set; }
-    public int data { get; set; }
+    public int index;
+    public string type;
+    public int data;
+    
+    public int getIndex
+    {
+        get
+        {
+            return index;
+        }
+        set
+        {
+            index = value;
+        }
+    }
+    public string getType
+    {
+        get 
+        {
+            return type;
+        }
+        set 
+        { 
+            type = value; 
+        } 
+    }
+    public int getData
+    {
+        get
+        {
+            return data;
+        }
+        set
+        {
+            data = value;
+        }
+    }
 
-    public void changeIndex(ItemData xindex)
-    {
-        index = xindex.index;
-    }
-    public void changeType(ItemData xtype)
-    {
-        type = xtype.type;
-    }
-    public void changeData(ItemData xdata)
-    {
-        data = xdata.data;
-    }
 }

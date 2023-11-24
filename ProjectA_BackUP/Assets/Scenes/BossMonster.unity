@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -358,7 +358,7 @@ RectTransform:
   m_GameObject: {fileID: 287605745}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 266683218}
@@ -367,7 +367,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 100, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &287605747
 MonoBehaviour:
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e36dc93d92192e24eb0d03afb117e5b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 14e29aeb659d5e348868c640f273cbab, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -591,6 +591,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiCharactorInfoSrc: {fileID: 287605747}
+  inventory: {fileID: 0}
+  itemSlot: {fileID: 0}
+  itemButton: {fileID: 0}
+  skillSlot: {fileID: 0}
+  skillButton: {fileID: 0}
+  option: {fileID: 0}
+  setting: {fileID: 0}
+  ExitText: {fileID: 0}
+  closeButton1: {fileID: 0}
+  closeButton2: {fileID: 0}
+  Shop: {fileID: 0}
+  JoyStick: {fileID: 0}
+  UI: {fileID: 0}
 --- !u!1 &2003478723
 GameObject:
   m_ObjectHideFlags: 0
