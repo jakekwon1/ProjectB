@@ -11,13 +11,12 @@ public class Village : MonoBehaviour
     public Monster monster { get; set; }
     public LichMonster lichMonster { get; set; }
     public Lich_Attack lichAttack { get; set; }
+    public BossMonster bossMonster { get; set; }
     GameObject[] monsters;
     GameObject createObj;
     public ItemData item { get; set; }
     public ShopUI Shop;
-    // 추가 내용----------------------------------------------------------------------------------------------------------
     public Dungeon_Portal portal;
-    //
     //List<Monster> monList { get; set; }
     float time;
     [SerializeField]
@@ -61,11 +60,14 @@ public class Village : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "BossMonster")
         {
-            Vector3 createPos = new Vector3(Random.Range(-49f, 49f), 0, Random.Range(-49f, 49f));
+            Vector3 createPos = new Vector3(0, 0, 40.0f);
             Vector3 pos = RayHelper.GetPositionOnTerrain(createPos);
             createObj = Resources.Load<GameObject>("Boss/Red_Dragon");
             createObj = GameObject.Instantiate<GameObject>(createObj);
             createObj.transform.position = pos;
+            createObj.transform.rotation = Quaternion.Euler(0, 180, 0);
+            BossMonster addedScript = createObj.AddComponent<BossMonster>();
+            bossMonster = addedScript;
         }
     }
 
